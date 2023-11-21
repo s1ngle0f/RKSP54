@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+</head>
+<body>
+Грузить тута =>
+<form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+</form>
+<th:block th:each="file : ${files}">
+    <form method="get" action="/download">
+        <p th:text="${file}"></p>
+        <input type="hidden" name="filepath" th:value="${file}">
+        <input text="Скачать" type="submit">
+    </form>
+</th:block>
+</body>
+</html>
